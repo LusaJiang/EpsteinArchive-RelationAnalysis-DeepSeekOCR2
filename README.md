@@ -1,266 +1,137 @@
-# 山东农业大学通用课程大作业模板
+# 基于 DeepSeek OCR 2 的爱泼斯坦档案人物关系自动分析可行性研究
 
-这是一个专为山东农业大学学生设计的LaTeX课程报告模板，适用于各种课程的平时论文和期末论文写作。
+## 📋 研究简介
 
-## 📋 项目简介
+本研究针对爱泼斯坦档案相关文本与图像资料，探讨基于DeepSeek OCR 2光学识别模型实现人物关系自动抽取、关联构建与可视化分析的可行性。研究重点解决复杂历史档案的数字化处理与社会网络分析问题。
 
-本模板基于LaTeX开发，提供标准化的学术论文格式，包含完整的封面、目录、章节结构等功能。支持中文排版，预设了合适的字体、字号和页边距。
+### 研究目标
+- 验证DeepSeek OCR 2在复杂档案文档识别中的性能优势
+- 构建从图像输入到人物关系网络的完整自动化分析流程
+- 探索历史档案数字化与社会网络可视化的技术路径
 
-### 主要特性
-- ✅ 标准化论文格式（页边距2.5cm）
-- ✅ 中文字体支持（宋体）和英文字体支持（Times New Roman）
-- ✅ 自动生成封面和目录
-- ✅ 完整的数学公式支持
-- ✅ 图片、表格插入功能
-- ✅ 参考文献管理（BibTeX）
-- ✅ 自定义文本框样式
-- ✅ 页眉页脚设置
-- ✅ 🆕 **自动PDF编译发布**（通过GitHub Actions）
+### 核心创新点
+- ⭐ **高精度OCR识别**：利用DeepSeek OCR 2处理复杂版式、低清晰度文档
+- ⭐ **智能实体识别**：自动抽取人名、机构、身份、时间、事件等关键信息
+- ⭐ **关系网络构建**：实现人物共现分析、社交网络自动生成与关键节点识别
+- ⭐ **跨模态融合**：结合计算机视觉与自然语言处理技术
 
-## 🚀 快速开始
+## 🎯 技术方案
 
-### 编译要求
-- XeLaTeX 编译器
-- 完整的TeX发行版（如TeX Live或MiKTeX）
-
-### 手动编译步骤
-使用以下编译顺序：
-```bash
-xelatex main.tex
-bibtex main.aux
-xelatex main.tex
-xelatex main.tex
+### 整体架构
+```
+图像/扫描件输入 → DeepSeek OCR 2文本提取 → 命名实体识别 → 关系抽取 → 网络构建 → 可视化分析
 ```
 
-或者使用自动化工具：
-```bash
-latexmk -xelatex main.tex
-```
+### 关键技术组件
 
-也可以使用我们提供的编译脚本：
-```bash
-chmod +x compile.sh
-./compile.sh
-```
+#### 1. 文档预处理层
+- 多源异构文档格式统一化处理
+- 图像质量增强与噪声抑制
+- 复杂版式分析与结构还原
 
-## 🤖 自动PDF编译与发布
+#### 2. OCR识别层
+- DeepSeek OCR 2核心识别引擎
+- 手写/印刷混合文本处理
+- 跨页文本对齐与连续性保持
 
-详见 [release-pdf.yml](./.github/workflows/release-pdf.yml).
+#### 3. 信息抽取层
+- 命名实体识别（NER）：人名、机构、职位、时间等
+- 实体链接与消歧处理
+- 别名指代关系解析
 
-### 使用方法
-
-#### 方法一：命令行操作
-```bash
-# 1. 提交所有更改
-git add .
-git commit -m "准备发布新版本"
-
-# 2. 创建并推送标签（标签名必须以v开头）
-git tag v1.0.0
-git push origin v1.0.0
-```
-
-#### 方法二：GitHub网页操作
-1. 在GitHub仓库页面点击"Releases"
-2. 点击"Draft a new release"
-3. 选择或创建一个以`v`开头的标签（如`v1.0.0`）
-4. 填写发布说明
-5. 点击"Publish release"
-
-### 发布结果
-等待约2-5分钟后，即可在GitHub的[Releases](../../releases)页面看到：
-- 自动生成的PDF文件（如：`山东农业大学课程报告_1.0.0.pdf`）
-- 详细的发布说明
-- 编译环境和时间信息
+#### 4. 关系分析层
+- 共现关系统计与权重计算
+- 社交网络图构建算法
+- 关键节点影响力排序机制
 
 ## 📁 项目结构
 
 ```
-├── main.tex          # 主文档文件
-├── SDAUReport.sty    # 模板样式文件
-├── reference.bib     # 参考文献数据库
-├── .gitignore        # Git忽略文件配置
-├── .github/
-│   └── workflows/
-│       ├── release-pdf.yml         # PDF自动编译发布
-├── figures/          # 图片资源文件夹
-│   ├── sdau_logo.png        # 山东农业大学校徽
-│   └── sdau_logo_notitle.png # 无标题校徽
-└── README.md         # 项目说明文档
+├── main.tex              # 论文主文档
+├── EpsteinArchive.sty    # 自定义样式文件
+├── reference.bib         # 参考文献数据库
+├── figures/              # 实验图表与示例图片
+│   ├── architecture.png         # 系统架构图
+│   ├── ocr_comparison.png       # OCR性能对比图
+│   ├── network_visualization.png # 关系网络可视化示例
+│   └── case_studies/            # 典型案例分析图表
+├── data/                 # 实验数据集（如适用）
+│   ├── sample_documents/        # 测试文档样本
+│   └── extracted_results/       # 抽取结果示例
+├── code/                 # 核心算法实现（如适用）
+│   ├── ocr_processor.py         # OCR处理模块
+│   ├── entity_extractor.py      # 实体抽取模块
+│   └── relation_analyzer.py     # 关系分析模块
+└── README.md             # 项目说明文档
 ```
 
-## 🛠️ 使用指南
+## 🚀 研究方法
 
-### 1. 初始设置
-首次使用时，请编辑 `SDAUReport.sty` 文件中的个人信息：
+### 实验设计
+1. **数据收集**：获取爱泼斯坦档案相关文档样本
+2. **基准测试**：对比传统OCR与DeepSeek OCR 2识别效果
+3. **流程验证**：端到端测试完整分析流程
+4. **性能评估**：量化分析准确率、召回率等指标
 
-```latex
-% 修改以下信息
-\author{
-\vspace{0.5cm}
-\kaishu\Large 学院\ \dlmu[9cm]{你的学院名称} \\
-\vspace{0.5cm}
-\kaishu\Large 班级\ \dlmu[9cm]{你的班级} \\
-\vspace{0.5cm}
-\kaishu\Large 学号\ \dlmu[9cm]{你的学号} \\
-\vspace{0.5cm}
-\kaishu\Large 姓名\ \dlmu[9cm]{你的姓名} \\
-}
+### 评估指标
+- OCR识别准确率与字符级/词级精度
+- 命名实体识别F1-score
+- 关系抽取准确率与完整性
+- 系统整体处理效率与时延
+
+## 🔧 技术难点与解决方案
+
+### 主要挑战
+1. **文档复杂性**：多样化的版式设计、图像质量参差不齐
+2. **语义理解**：别名指代、隐式关联、跨文档共指消解
+3. **伦理合规**：敏感信息处理与隐私保护机制
+4. **准确性保障**：高质量标注数据获取困难
+
+### 应对策略
+- 采用集成学习提升OCR鲁棒性
+- 构建领域专用词典和规则库
+- 设计多层次验证机制确保结果可靠性
+- 建立严格的数据访问控制体系
+
+## 📊 预期成果
+
+### 理论贡献
+- 验证DeepSeek OCR 2在历史档案数字化中的应用价值
+- 提出面向复杂文档的人物关系自动分析框架
+- 建立计算机视觉与社会网络分析的跨学科研究范式
+
+### 实践意义
+- 为类似历史档案的自动化分析提供技术参考
+- 支撑大规模历史文献的知识发现与价值挖掘
+- 推动人工智能在人文社科研究中的深度应用
+
+## 📚 使用说明
+
+### 编译要求
+- XeLaTeX 编译器
+- 完整的TeX发行版（推荐TeX Live）
+
+### 编译步骤
+```
+# 完整编译流程
+xelatex main.tex
+bibtex main.aux
+xelatex main.tex
+xelatex main.tex
+
+# 或使用自动化编译
+latexmk -xelatex main.tex
 ```
 
-同时修改标题信息：
-```latex
-\title{ 
-\vspace{1cm}
-\heiti \Huge \textbf{{你的课程名称}} \par
-\vspace{1cm} 
-\heiti \Large {\underline{你的报告题目}}
-\vspace{2cm}
-}
-```
 
-### 2. 页眉设置
-在 `SDAUReport.sty` 中修改页眉内容：
-```latex
-\fancyhead[C]{\fangsong 你的页眉内容}
-```
+## 🤝 研究展望
 
-### 3. 添加内容
-在 `main.tex` 中添加你的报告内容：
+本研究为历史档案的智能化处理开辟了新的技术路径，未来可在以下方向深入探索：
+- 结合大语言模型提升语义理解能力
+- 扩展至多模态信息融合分析
+- 构建交互式可视化分析平台
+- 探索联邦学习在敏感数据分析中的应用
 
-#### 插入章节
-```latex
-\section{章节标题}
-这里是章节内容...
-```
+## 📄 许可声明
 
-#### 插入公式
-```latex
-% 行内公式
-欧拉公式 $v-\varepsilon+\phi=2$
-
-% 行间公式
-\begin{equation}
-    v-\varepsilon+\phi=2
-    \label{Euler}
-\end{equation}
-```
-
-#### 插入图片
-```latex
-\begin{figure}[!htbp]
-    \centering
-    \includegraphics[width=.5\textwidth]{figures/图片文件名.png}
-    \caption{图片说明}
-    \label{fig:label}
-\end{figure}
-```
-
-#### 插入表格
-```latex
-\begin{table}[!htbp]
-    \centering
-    \begin{tabular}{l|l}
-        \hline
-        列1 & 列2 \\
-        \hline
-        内容1 & 内容2 \\
-        \hline
-    \end{tabular}
-    \caption{表格说明}
-    \label{tab:label}
-\end{table}
-```
-
-#### 插入参考文献
-在 `reference.bib` 中添加文献条目，然后在正文中引用：
-```latex
-文献\cite{文献标签}表明...
-```
-
-### 4. 自定义功能
-
-#### 文本框
-使用 `\tbox{}` 命令插入圆角灰底文本框：
-```latex
-\tbox{这是文本框内容}
-```
-
-#### 定理环境
-模板提供了多种数学环境：
-```latex
-\begin{Theorem}
-定理内容
-\end{Theorem}
-
-\begin{Definition}
-定义内容
-\end{Definition}
-
-\begin{Example}
-例子内容
-\end{Example}
-```
-
-## 📚 参考文献格式
-
-参考文献使用BibTeX管理，在 `reference.bib` 文件中按照标准格式添加：
-
-```bibtex
-@article{example2023,
-  title={文章标题},
-  author={作者姓名},
-  journal={期刊名称},
-  year={2023}
-}
-
-@inproceedings{conf2023,
-  title={会议论文标题},
-  author={作者姓名},
-  booktitle={会议名称},
-  pages={1--10},
-  year={2023}
-}
-```
-
-## 🔧 常见问题
-
-### Q: 编译时报错找不到字体？
-A: 确保安装了完整的TeX发行版，并且系统中有相应的中文字体。
-
-### Q: 图片无法显示？
-A: 检查图片路径是否正确，建议将图片放在 `figures` 文件夹中。
-
-### Q: 参考文献不显示？
-A: 确保按正确的编译顺序执行，并检查 `.bib` 文件格式是否正确。
-
-### Q: 如何修改页面边距？
-A: 在 `SDAUReport.sty` 中修改 geometry 包的参数：
-```latex
-\RequirePackage[left=2.50cm, right=2.50cm, top=2.50cm, bottom=2.50cm]{geometry}
-```
-
-### Q: 自动编译失败怎么办？
-A: 检查以下几点：
-1. 标签名是否以`v`开头
-2. LaTeX源文件是否有语法错误
-3. 查看Actions页面的具体错误信息
-4. 可以下载编译日志进行调试
-
-## 🤝 贡献
-
-欢迎提交Issue和Pull Request来改进这个模板！
-
-## 📄 许可证
-
-本项目基于 [CC-BY-SA-4.0](./LICENSE) 许可证开源。
-
-## 🔗 相关链接
-
-- [GitHub仓库](https://github.com/LusaJiang/SADU_Course_Template_Latex)
-- [Overleaf在线编辑](https://www.overleaf.com/latex/)
-- [LaTeX入门教程](https://www.latex-project.org/help/documentation/)
-
----
-
-**注意**：请根据具体课程要求调整格式规范，此模板仅供参考使用。
+本研究成果仅供学术研究使用，相关数据处理严格遵守法律法规和伦理规范。
