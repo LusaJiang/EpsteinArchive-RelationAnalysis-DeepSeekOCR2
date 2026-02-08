@@ -1,0 +1,13 @@
+# Core dependencies
+Pillow>=9.0.0
+numpy>=1.21.0
+
+# Optional dependencies for enhanced functionality
+requests>=2.25.0  # For API calls
+matplotlib>=3.5.0  # For visualization (optional)
+networkx>=2.6.0    # For graph analysis (optional)
+
+# Development dependencies
+pytest>=6.0.0     # For testing
+black>=21.0.0     # For code formatting
+flake8>=3.8.0     # For linting

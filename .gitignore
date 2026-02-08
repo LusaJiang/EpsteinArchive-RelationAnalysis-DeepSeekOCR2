@@ -6,7 +6,7 @@
 *.toc
 *.bbl
 *.blg
-*.pdf
+main.pdf
 *.synctex.gz
 *.lof
 *.lot
@@ -18,3 +18,5 @@
 temp_archive/
 *.zip
 SDAUReport.sty
+download/
+*.xdv
