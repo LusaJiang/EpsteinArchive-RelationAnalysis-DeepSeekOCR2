@@ -136,4 +136,4 @@ latexmk -xelatex main.tex
 
 ## 引用
 
-本项目非学术论文，不建议引用。如需引用，请按照(LICENSE)[./LICENSE]相关规定使用。
+本项目非学术论文，不建议引用。如需引用，请按照[LICENSE](./LICENSE)相关规定使用。
